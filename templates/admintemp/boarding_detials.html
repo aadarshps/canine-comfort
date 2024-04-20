@@ -12,6 +12,7 @@
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
                     <th scope="col">Room Preference</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Special Requirements</th>
                     <th scope="col">Status</th>
                 </tr>
@@ -24,6 +25,7 @@
                     <td>{{i.start_date}}</td>
                     <td>{{i.end_date}}</td>
                     <td>{{i.room_preference}}</td>
+                    <td>Rs.{{i.room_preference.amount}}</td>
                     <td>{{i.special_requirements}}</td>
                     <td>{{i.status}}</td>
                     <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'approve-boarding' i.id  %}">&#10004;</a></td>

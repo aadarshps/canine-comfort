@@ -1,5 +1,5 @@
 from django import forms
-
+from django.core.validators import RegexValidator
 from customer_app.models import *
 
 class DateInput(forms.DateInput):
@@ -25,3 +25,21 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ['description']
+
+class AddBill(forms.ModelForm):
+    name = forms.ModelChoiceField(queryset=User.objects.filter(role='3'))
+
+    class Meta:
+        model = Bill
+        exclude = ['status', 'paid_on']
+
+
+class PayBillForm(forms.ModelForm):
+    card_no = forms.CharField(validators=[RegexValidator(regex='^.{16}$', message='Please Enter a Valid Card No')])
+    card_cvv = forms.CharField(widget=forms.PasswordInput,
+                               validators=[RegexValidator(regex='^.{3}$', message='Please Enter a Valid CVV')])
+    expiry_date = forms.DateField(widget=DateInput(attrs={'id': 'example-month-input'}))
+
+    class Meta:
+        model = CreditCard
+        fields = ['card_no', 'card_cvv', 'expiry_date']

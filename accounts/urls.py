@@ -16,5 +16,7 @@ urlpatterns = [
     path('list-reports-admin', views.list_reports_admin, name='list-reports-admin'),
     path('sign-out/',views.logout_view,name='sign-out'),
     path('create-room/',views.create_room,name='create-room'),
-    path('room-view/',views.room_view,name='room-view')
+    path('room-view/',views.room_view,name='room-view'),
+    path('add-bill/', views.bill, name='add-bill'),
+    path('view-bill/', views.view_bill, name='view-bill'),
 ]

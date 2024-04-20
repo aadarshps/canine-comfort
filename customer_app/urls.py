@@ -13,5 +13,9 @@ urlpatterns = [
     path('feeds-view-customer/',views.feeds_view_customer,name='feeds-view-customer'),
     path('staff-view-customer/',views.staff_view_customer,name='staff-view-customer'),
     path('list-reports-customer/',views.list_reports_customer,name='list-reports-customer'),
-    path('room-list/',views.room_list,name='room-list')
+    path('room-list/',views.room_list,name='room-list'),
+    path('view-bill-user', views.view_bill_user, name='view-bill-user'),
+    path('pay_bill/<int:id>/', views.pay_bill, name='pay_bill'),
+    path('pay_in_direct/<int:id>/', views.pay_in_direct, name='pay_in_direct'),
+    path('bill_history', views.bill_history, name='bill_history'),
 ]

@@ -81,6 +81,8 @@ class Room(BaseModel):
 
     def __str__(self):
         return self.room_type
+    
+
 
 
 

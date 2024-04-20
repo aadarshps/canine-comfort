@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from accounts.forms import *
 from django.contrib import messages
 from accounts.models import *
+from customer_app.forms import AddBill
 from customer_app.models import *
 from staff_app.models import Report
 from django.contrib.auth.decorators import login_required
@@ -133,6 +134,20 @@ def create_room(request):
 def room_view(request):
     data = Room.objects.all()
     return render(request,'admintemp/rooms.html',{'data':data})
+
+def bill(request):
+    form = AddBill()
+    if request.method == 'POST':
+        form = AddBill(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('view-bill')
+    return render(request, 'admintemp/generate_bill.html', {'form': form})
+
+def view_bill(request):
+    bill = Bill.objects.all()
+    print(bill)
+    return render(request, 'admintemp/view_payment_details.html', {'bills': bill})
 
 
 
