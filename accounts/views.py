@@ -120,5 +120,19 @@ def list_reports_admin(request):
     data = Report.objects.all()
     return render(request, 'admintemp/report_detials.html',{'data':data})
 
+def create_room(request):
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('room-view')
+    else:
+        form = RoomForm()
+    return render(request,'admintemp/create_room.html',{'form':form})
+
+def room_view(request):
+    data = Room.objects.all()
+    return render(request,'admintemp/rooms.html',{'data':data})
+
 
 

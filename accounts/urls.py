@@ -15,4 +15,6 @@ urlpatterns = [
     path('approve-boarding/<int:pk>/', views.approve_boardings, name='approve-boarding'),
     path('list-reports-admin', views.list_reports_admin, name='list-reports-admin'),
     path('sign-out/',views.logout_view,name='sign-out'),
+    path('create-room/',views.create_room,name='create-room'),
+    path('room-view/',views.room_view,name='room-view')
 ]

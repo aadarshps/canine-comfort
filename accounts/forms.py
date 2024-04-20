@@ -50,3 +50,8 @@ class AdminApproveBoardingForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['staff'].queryset = User.objects.filter(role=2)
+
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = ['room_type','description','amount']

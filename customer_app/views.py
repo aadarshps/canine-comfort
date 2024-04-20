@@ -11,7 +11,7 @@ def customer_home(request):
 @login_required(login_url='sign-in')
 def boarding_view(request):
     if request.method == 'POST':
-        form = BoardingForm(request.POST, request.FILES)
+        form = BoardingForm(request.POST)
         if form.is_valid():
             form.instance.customer_id = request.user.id
             form.save()
@@ -74,4 +74,9 @@ def staff_view_customer(request):
 def list_reports_customer(request):
     data = Report.objects.filter(customer=request.user)
     return render(request, 'customertemp/report_detials.html',{'data':data})
+
+def room_list(request):
+    rooms = Room.objects.all().order_by('id')
+    return render(request, 'customertemp/room_cards.html', {'rooms': rooms})
+
 
